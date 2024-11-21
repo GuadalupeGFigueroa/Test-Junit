@@ -1,6 +1,13 @@
 package org.factoriaf5.example;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,14 +41,14 @@ public ExercisesTest(){
    
    @Test 
    //Test método 2/2. Comprueba que el valor devuelto sea un número positivo
-    void testCheckPositivo() {
+    public void testCheckPositivo() {
         int number = 5;
         boolean result = this.exercises.checkPositivo(number);
         Assertions.assertTrue(result);
     }
 
     @Test
-    void testCheckPositivoError() {
+    public void testCheckPositivoError() {
         int number = - 5;
         assertThrows(IllegalArgumentException.class, () -> {
             exercises.checkPositive(number);
@@ -53,21 +60,57 @@ public ExercisesTest(){
         ->: Separa los parámetros de la implementación del cuerpo de la lambda.
         { ... }: El bloque de código que se ejecutará. Aquí, se llama al método checkPositive(number)
         */
+    
+    @Test
+    //Test método 3. Contar letras "a" de un string
+    public void testContarLetrasA() {
+        String cadena = "migataesmuybonita";
+        int result =exercises.contarLetrasA(cadena);
+        assertNotNull(result);
+        assertEquals(3, result);
+    }
+
+    @Test
+    //Test método 3 que comprueba que en el caso de no haber letra A el resultado sea 0
+    public void testContarLetrasASinA(){
+        String cadena = "miperroquierecomer";
+        int result = this.exercises.contarLetrasA(cadena);
+        assertEquals(0, result);
+    }
+    @Test
+    //Test método 3 para el caso que el valor esté vacío
+    public void testContarLetrasAEmpty() {
+        String cadena = "";
+        int result = this.exercises.contarLetrasA(cadena);
+        assertEquals(0, result);
+    }
+
+    @Test
+    // Test del método 4. Retorna un valor booleano si la lista contiene el elemento
+    public void testContieneElemento() {
+        List<String> countries = List.of("Colombia", "México", "Perú", "España");
+        String country = "España";
+        boolean result = this.exercises.contieneElemento(countries, country);
+        assertTrue(result);
+    }
+
+    @Test
+    //Comprobamos un elemento que no está presente en la lista
+    public void testContieneElementoNoExiste() {
+        List<String> countries = List.of("Colombia", "México", "Perú", "España");
+        String country = "Holanda";
+        boolean result = this.exercises.contieneElemento(countries, country);
+        assertFalse(result);
+    }
+
+
     @Test
     void testCalcularMedia() {
+    
 
     }
 
- 
-    @Test
-    void testContarLetrasA() {
-
-    }
-
-    @Test
-    void testContieneElemento() {
-
-    }
+    
 
     @Test
     void testConvertirAString() {
