@@ -120,11 +120,81 @@ public ExercisesTest(){
         assertEquals("asac", result);
     }
     @Test
+    //Test método 6. Comprobamos si el valor devuelto corresponde al factorial de 5.
+    //Valor factorial de 5: 5!=5*4*3*2*1= 120
     public void testFactorial() {
         int number = 5;
         long result = this.exercises.factorial(number);
         assertEquals(120, result);
     }
+
+    @Test
+    //Test método 6. Comprobamos que el valor introducido sea un número positivo.
+   public void testFactorialError() {
+        int number = -5;
+        assertThrows(IllegalArgumentException.class, () -> {
+            this.exercises.factorial(number);
+
+        });
+    }
+
+    @Test
+    // Test método 7. Números primos
+    public void testEsPrimo() {
+        int number = 7;
+        boolean result = this.exercises.esPrimo(number);
+        assertTrue(result);
+    }
+
+
+    @Test
+    public void testNoEsPrimo() {
+    // Números no primos
+        int number = 8;
+        boolean result = this.exercises.esPrimo(number);
+        assertFalse(this.exercises.esPrimo(8));
+    }
+
+    @Test
+    // Casos especiales
+    public void testNumeroNegativo() {
+        int number = -10;
+        boolean result = this.exercises.esPrimo(number);
+        assertFalse(this.exercises.esPrimo(-10)); // No es primo
+    }
+
+    @Test
+    // Casos especiales
+    public void testNumeroCero() {
+        int number = 0;
+        boolean result = this.exercises.esPrimo(number);
+        assertFalse(this.exercises.esPrimo(0)); // No es primo
+    }
+
+    @Test
+    // Casos especiales
+    public void testNumeroUno() {
+        int number = 1;
+        boolean result = this.exercises.esPrimo(number);
+        assertFalse(this.exercises.esPrimo(1)); // No es primo
+    }
+
+    @Test
+    void testMensajeConRetraso() {
+
+    }
+
+    @Test
+    void testMensajeConRetrasoInterrumpido() {
+
+    }
+
+    @Test
+    void testConvertirAString() {
+
+    }
+
+
 
     @Test
     void testCalcularMedia() {
@@ -134,28 +204,17 @@ public ExercisesTest(){
 
     
 
-    @Test
-    void testConvertirAString() {
-
-    }
-
+  
     @Test
     void testConvertirListaAString() {
 
     }
 
-    @Test
-    void testEsPrimo() {
-
-    }
+   
 
     
 
-    @Test
-    void testMensajeConRetraso() {
-
-    }
-
+ 
     
 
     

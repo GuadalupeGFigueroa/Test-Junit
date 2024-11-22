@@ -58,6 +58,31 @@ public class Exercises {
         }
         return true;
     }
+/*
+
+Me anoto esta sugerencia de la IA para estudiarla  ¡.
+
+ public boolean esPrimo(int numero) {
+    if (numero <= 1) {
+        return false; // 0, 1 y números negativos no son primos
+    }
+    if (numero == 2) {
+        return true; // 2 es el único número primo par
+    }
+    if (numero % 2 == 0) {
+        return false; // Números pares mayores que 2 no son primos
+    }
+    for (int i = 3; i * i <= numero; i += 2) {
+        if (numero % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+ */
+
+
 
     // 8. Método que simula un retraso y retorna un mensaje
     public String mensajeConRetraso() throws InterruptedException {
