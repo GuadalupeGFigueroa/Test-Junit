@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -27,7 +28,7 @@ public ExercisesTest(){
     }
     
     @Test
-    // 1. Test método 1/2. Comprueba si se suman 2 números correctamente
+    // 1. Test método Sumar 1. Comprueba si se suman 2 números correctamente
    public void testSumar() {
       int num1 = 35;
       int num2 = 79;
@@ -40,7 +41,7 @@ public ExercisesTest(){
    }
    
    @Test 
-   //Test método 2/2. Comprueba que el valor devuelto sea un número positivo
+   //Test método 2. Comprueba que el valor devuelto sea un número positivo
     public void testCheckPositivo() {
         int number = 5;
         boolean result = this.exercises.checkPositivo(number);
@@ -103,6 +104,27 @@ public ExercisesTest(){
         assertFalse(result);
     }
 
+    @Test
+    //Comprobamos un elemento cuando la lista está vacía
+    public void testContieneElementoListaVacia() {
+        List<String> countries = Collections.emptyList();
+        String country = "México";
+        boolean result = this.exercises.contieneElemento(countries, country);
+        assertFalse(result);
+    }
+    @Test
+    //Test método 5. Revertir cadena
+    public void testRevertirCadena() {
+        String cadena = "casa";
+        String result = this.exercises.revertirCadena(cadena);
+        assertEquals("asac", result);
+    }
+    @Test
+    public void testFactorial() {
+        int number = 5;
+        long result = this.exercises.factorial(number);
+        assertEquals(120, result);
+    }
 
     @Test
     void testCalcularMedia() {
@@ -127,20 +149,14 @@ public ExercisesTest(){
 
     }
 
-    @Test
-    void testFactorial() {
-
-    }
+    
 
     @Test
     void testMensajeConRetraso() {
 
     }
 
-    @Test
-    void testRevertirCadena() {
-
-    }
+    
 
     
 }
