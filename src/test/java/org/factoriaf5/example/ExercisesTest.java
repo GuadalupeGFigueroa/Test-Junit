@@ -256,9 +256,9 @@ interrupt();
       
     @Test
     public void testConvertirListaAString() {
-        List<String> lista = List.of("Calle", "María", "Josefa", "27");
+        List<String> lista = List.of("Calle", "Maria", "Josefa", "27");
         String result = this.exercises.convertirListaAString(lista);
-        assertEquals("Calle, María, Josefa, 27", result);
+        assertEquals("CALLE,MARIA,JOSEFA,27", result);
 
     }
 
@@ -269,7 +269,7 @@ interrupt();
         lista.add(null);
         lista.add("F5");
         String result = this.exercises.convertirListaAString(lista);
-        assertEquals("Hola,NULL,F5", result);
+        assertEquals("HOLA,NULL,F5", result);
 
     }
 
