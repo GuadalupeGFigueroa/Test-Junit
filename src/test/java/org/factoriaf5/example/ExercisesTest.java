@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -52,7 +53,7 @@ public ExercisesTest(){
     public void testCheckPositivoError() {
         int number = - 5;
         assertThrows(IllegalArgumentException.class, () -> {
-            exercises.checkPositive(number);
+            exercises.checkPositivo(number);
         });
     }
         /*el operador -> representa una expresión lambda. 
@@ -180,7 +181,7 @@ public ExercisesTest(){
     }
 
     
-    /*  Testeo del método que simula un retraso y retorna un mensaje. 
+    /*  Testeo del método 8 que simula un retraso y retorna un mensaje. 
         Como el método consta de 2 partes, por un lado que lance una excepción y por otra que el valor del retraso sea de 5000,
         haremos el testeo de ambas partes */
     @Test
@@ -219,32 +220,66 @@ interrupt();
     }
 
     @Test
-    void testConvertirAString() {
-
+    //Test método 9
+    public void testConvertirAString() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<String> result = this.exercises.convertirAString(numbers);
+        assertEquals(List.of("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"), result);
+        
     }
-
-
 
     @Test
-    void testCalcularMedia() {
+    //Test método 10
+    public void testCalcularMedia() {
+        List<Integer> numbers = List.of(1, 2, 3);
+        double result = this.exercises.calcularMedia(numbers);
+        assertEquals( 2, result);
     
-
     }
 
-    
-
-  
     @Test
-    void testConvertirListaAString() {
+    //Testeamos el caso en el que el valor sea nulo, por ejemplo que no sea entero
+    public void testCalcularMediaNull() { 
+        List<Integer> numbers = null;
+        assertThrows(IllegalArgumentException.class,() -> {
+            this.exercises.calcularMedia(numbers);
+        });
+    }
+    
+    @Test 
+    public void testCalcularMediaEmpty(){
+        List<Integer> numbers = Collections.emptyList();
+        assertThrows(IllegalArgumentException.class, () -> {
+            this.exercises.calcularMedia(numbers);
+        });
+    }
+      
+    @Test
+    public void testConvertirListaAString() {
+        List<String> lista = List.of("Calle", "María", "Josefa", "27");
+        String result = this.exercises.convertirListaAString(lista);
+        assertEquals("Calle, María, Josefa, 27", result);
 
     }
 
-   
+    @Test
+    public void testConvertirListaAStringNull() {
+        List<String> lista = new ArrayList();
+        lista.add("Hola");
+        lista.add(null);
+        lista.add("F5");
+        String result = this.exercises.convertirListaAString(lista);
+        assertEquals("Hola,NULL,F5", result);
 
-    
+    }
 
- 
-    
+    @Test
+    public void testConvertirListaAStringEmpty() {
+        List<String> lista = Collections.emptyList();
+        String result = this.exercises.convertirListaAString(lista);
+        assertEquals("", result);
+
+    }
 
     
 }
