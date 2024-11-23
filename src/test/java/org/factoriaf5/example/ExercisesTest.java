@@ -179,14 +179,43 @@ public ExercisesTest(){
         assertFalse(this.exercises.esPrimo(1)); // No es primo
     }
 
+    
+    /*  Testeo del método que simula un retraso y retorna un mensaje. 
+        Como el método consta de 2 partes, por un lado que lance una excepción y por otra que el valor del retraso sea de 5000,
+        haremos el testeo de ambas partes */
     @Test
-    void testMensajeConRetraso() {
-
+    public void testMensajeConRetraso() throws InterruptedException {
+        String result = this.exercises.mensajeConRetraso();
+        assertEquals("Listo después de retraso", result);
+    
     }
+    /* InterruptedException :
+        Si la otra tarea está activa, lo único que pasa es que se marca el flag de interrupción.
+
+Pero si la otra tarea está bloqueada esperando a que ocurra algo, en lugar de marcar el flag, se le lanza una InterruptedException. 
+El efecto es que la tarea se despierta y sabe que es porque la ha interrumpido otra.
+
+Si no hacemos nada, la interrupción se limita a despertar a la tarea.
+
+A veces lo que se hace es aprovechar el manejador para activar el flag y centralizar en otro sitio el manejo de la interrupción:
+
+try {
+
+...;
+
+} catch (InterruptedException e) {
+
+interrupt();
+
+}         */
 
     @Test
-    void testMensajeConRetrasoInterrumpido() {
-
+    public void testMensajeConRetrasoInterrumpido() {
+        Thread.currentThread().interrupt(); // Thread.currentThread: Obtiene el subproceso actualmente en ejecución.
+        assertThrows(InterruptedException.class,() -> {
+            this.exercises.mensajeConRetraso();
+        });
+        Thread.interrupted();
     }
 
     @Test
